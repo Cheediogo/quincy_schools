@@ -8,7 +8,7 @@ function App() {
       <h2 className='text-white text-center'>Gift Cards</h2>
       <Row>
         {GiftCards.map((currency) => (
-          <Col sm={12} md={4} className="pt-3 ">
+          <Col sm={12} md={6} lg={4} className="pt-3 ">
             <div className='card p-3 mb-3 border-0' key={currency.id}>
               <h5 className='card-title fw-bold'>{currency.title}</h5>
               <p className='card-content pt-4'>{currency.currencies.map((curency)=>{
