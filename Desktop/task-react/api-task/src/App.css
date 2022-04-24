@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+}
+
+.card {
+  height: 20rem;
+  background-color: slategrey !important;
+  box-shadow: 2px 2px 2px 1px #141212;
+}
+
+.card-title {
+  color: #fff;
+}
