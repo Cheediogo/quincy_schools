@@ -21,7 +21,7 @@ const Home = () => {
         <div className='nav-sec'>
             <Navbar collapseOnSelect expand="lg"  variant="dark">
                 <Container>
-                <Navbar.Brand as={Link} to="/">Home</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/Home">Home</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
