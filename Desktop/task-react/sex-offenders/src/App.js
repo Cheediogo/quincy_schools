@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="bgd-color">
       <Routes>
-        <Route exact path="/Home" element={<Home />} />
+        <Route exact path="/sex-offenders" element={<Home />} />
         <Route exact path="/About" element={<About />} />
         <Route exact path="/Contact" element={<Contact />} />
       </Routes>

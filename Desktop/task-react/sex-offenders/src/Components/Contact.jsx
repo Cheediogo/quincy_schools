@@ -29,7 +29,7 @@ const Contact = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                    <Nav.Link as={Link} to="/Home">Home</Nav.Link>
+                    <Nav.Link as={Link} to="/">Home</Nav.Link>
                     <Nav.Link as={Link} to="/About">About NSOPW</Nav.Link>
                     </Nav>
                     <Nav>
