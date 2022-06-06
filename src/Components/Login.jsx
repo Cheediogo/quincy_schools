@@ -80,11 +80,11 @@ const Login = () => {
                     <form className='submit-btn' onSubmit={login} >
                         <div>
                             <label>
-                                <input type="text" 
+                                <input type="email" 
                                 className='input mb-3' 
                                 name='email' 
                                 value={loginDetails.email} 
-                                placeholder='Type Your Student Email' 
+                                placeholder='Type Your Email' 
                                 onChange={handleLoginChange}/>
                             </label>
                         </div>

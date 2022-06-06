@@ -4,10 +4,10 @@ import LandingPage from './Components/LandingPage';
 import Login from './Components/Login';
 import Dashboard from './Components/Dashboard';
 import AllCourses from './Components/AllCourses';
-import Profile from './Components/Profile';
 import Course from './Components/Course';
 import DashboardItem from './Screens/DashboardItem';
 import SignUp from './Components/SignUp';
+import Profile from './Components/Profile';
 
 
 function App() {
