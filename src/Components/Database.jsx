@@ -1,5 +1,5 @@
 
-const Database= [
+const Courses= [
   {
      id: 1,
      name: "chemistry",
@@ -81,4 +81,4 @@ const Database= [
   
   
 
-export default Database
+export default Courses

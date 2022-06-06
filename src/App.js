@@ -7,18 +7,21 @@ import AllCourses from './Components/AllCourses';
 import Profile from './Components/Profile';
 import Course from './Components/Course';
 import DashboardItem from './Screens/DashboardItem';
+import SignUp from './Components/SignUp';
+
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="quincy_schools" element={<LandingPage />} />
         <Route path="login" element={<Login />} />
+        <Route path="signup" element={<SignUp />} />
         <Route path="dashboard" element={<Dashboard />} >
           <Route path="dash" element={<DashboardItem />} />
           <Route path="courses" element={<AllCourses/>} />
           <Route path="profile" element={<Profile/>} />
-          <Route path="course" element={<Course/>} />
+          <Route path="course/:id" element={<Course/>} />
         </Route>
       </Routes>
       

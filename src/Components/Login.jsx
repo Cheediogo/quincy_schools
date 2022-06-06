@@ -5,27 +5,46 @@ import him_coding from '../Images/him_coding.png';
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import {  Nav } from "react-bootstrap";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, provider } from '../Firebase';
-// import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const navigate = useNavigate();
 
-    const [values, setValues] = useState({
-        studentid: "",
+    const navigate = useNavigate();
+    
+    const [user, setUser] = useState({});
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+    });
+
+    const [loginDetails, setLoginDetails] = useState({
+        email: "",
         password:"",
       });
     
-      const handleChange = (event) => {
-        setValues({
-          ...values,
-          [event.target.name]: event.target.value,
-        });
+    const handleLoginChange = e => {
+        const { name, value } = e.target;
+        setLoginDetails(prev => ({ ...prev, [name]: value }));
       };
 
-      const SignInwithGoogleFunc = (e) => {
-          e.preventDefault();
+    const login = async () => {
+        try {
+            const user = await signInWithEmailAndPassword(
+                auth,
+                loginDetails.email,
+                loginDetails.password
+            );
+            setLoginDetails({ email: '', password: '' });
+            console.log(user);
+            navigate('/dashboard/dash')
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
+
+
+    const SignInwithGoogleFunc = (e) => {
+        e.preventDefault();
             signInWithPopup(auth, provider)
                 .then((res) => {
                     console.log(res);
@@ -34,7 +53,18 @@ const Login = () => {
                 .catch((error) => {
                     console.log(error)
                 })
+    };
+
+    const logout = async () => {
+        try {
+          await signOut(auth);
+          navigate('/login')
+        } catch (err) {
+          console.log(err.message);
+        }
       };
+    
+
     
   return (
     <div className='other-bg p-5 vh-100'> 
@@ -47,15 +77,15 @@ const Login = () => {
                 </div>
                 <div className='login-width text-center login-logo'>  
                     <img src={skools} alt="school_logo" className='mb-3 d-md-block d-none'/>   
-                    <form className='submit-btn'>
+                    <form className='submit-btn' onSubmit={login} >
                         <div>
                             <label>
                                 <input type="text" 
                                 className='input mb-3' 
-                                name='studentid' 
-                                value={values.name} 
-                                placeholder='Type Your Student ID Number' 
-                                onChange={handleChange}/>
+                                name='email' 
+                                value={loginDetails.email} 
+                                placeholder='Type Your Student Email' 
+                                onChange={handleLoginChange}/>
                             </label>
                         </div>
                         <div>
@@ -63,22 +93,27 @@ const Login = () => {
                                 <input type="password" 
                                 className='input' 
                                 name='password' 
-                                value={values.name} 
+                                value={loginDetails.password} 
                                 placeholder='Type Your Password' 
-                                onChange={handleChange}/>
+                                onChange={handleLoginChange}/>
                             </label>
                             <div className='text-font d-flex pt-1'>
                                 <div className='btn-txt1'>Forgot Password?</div>
-                                <div className='btn-text'>Register</div>
+                                <Link to="/signup" >
+                                    <div className='btn-text'>Register</div>
+                                </Link>
                             </div>
                         </div>
-                        <Nav as={Link} to="/dashboard/dash" className='nav-btn'>
-                            <button  type='submit' className=' border-0 rounded-pill text-white other-bg'>Submit</button>
+                        <Nav className='nav-btn'>
+                            <button type='submit'  className=' border-0 rounded-pill text-white other-bg'>Login</button>
                         </Nav>
-                        {/* <div className='text-danger pt-3'><p>OR</p></div> */}
-                        <Nav as={Link} to="/dashboard/dash" className='nav-btn'>
-                            <button  type='submit' onClick={(e) => SignInwithGoogleFunc(e)} className=' border-0 rounded-pill text-danger other-bg'>Login with Google</button>
-                        </Nav>
+                        <Link to="/" onClick={logout} >
+                            <h6>Logout</h6>
+                        </Link>
+                        
+                        {/* <h6>User Logged In: </h6>{auth.currentUser.email} */}
+                        <h6>User Logged In: </h6>{user?.email}
+                        <div onClick={(e) => SignInwithGoogleFunc(e)} className='text-danger pt-3 fw-bold'>Login with Google</div>
                     </form>
                 </div>
         </div>
