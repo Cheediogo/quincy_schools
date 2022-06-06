@@ -14,6 +14,7 @@ const SignUp = () => {
     const [registerDetails, setRegisterDetails] = useState({
         email: "",
         password:"",
+        name:""
       });
     
     const handleRegisterChange = e => {
@@ -21,12 +22,14 @@ const SignUp = () => {
         setRegisterDetails(prev => ({ ...prev, [name]: value }));
       };
 
-    const register = async () => {
+    const register = async (e) => {
+        e.preventDefault();
         try {
             const user = await createUserWithEmailAndPassword(
                 auth,
                 registerDetails.email,
-                registerDetails.password
+                registerDetails.password,
+                registerDetails.name
             );
             localStorage.setItem('name', registerDetails.name);
             setRegisterDetails({
@@ -35,7 +38,7 @@ const SignUp = () => {
                 password: '',
             });
             console.log(user);
-            navigate('/login')
+            navigate('/dashboard/dash')
         } catch (error) {
             console.log(error.message);
         }
@@ -53,7 +56,17 @@ const SignUp = () => {
                 </div>
                 <div className='login-width text-center login-logo'>  
                     <img src={skools} alt="school_logo" className='mb-3 d-md-block d-none'/>   
-                    <form className='submit-btn'>
+                    <form className='submit-btn' onSubmit={register}>
+                    <div>
+                            <label>
+                                <input type="text" 
+                                className='input mb-3' 
+                                name='name' 
+                                value={registerDetails.name} 
+                                placeholder='Type Your Student Name' 
+                                onChange={handleRegisterChange}/>
+                            </label>
+                        </div>
                         <div>
                             <label>
                                 <input type="text" 
@@ -74,8 +87,8 @@ const SignUp = () => {
                                 onChange={handleRegisterChange}/>
                             </label>
                         </div>
-                        <Nav as={Link} to="/dashboard/dash" onClick={register} className='nav-btn'>
-                            <button  type='submit'  className=' border-0 rounded-pill text-white other-bg'>Sign Up</button>
+                        <Nav  className='nav-btn'>
+                            <button type='submit'  className=' border-0 rounded-pill text-white other-bg'>Sign Up</button>
                         </Nav>
                         
                     </form>

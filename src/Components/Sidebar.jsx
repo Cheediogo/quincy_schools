@@ -8,8 +8,10 @@ import {
     Person,
   } from "react-bootstrap-icons";
 import skools from '../Images/skools.png';
+import useLogout from './useLogout'; 
 
 const Sidebar = () => {
+  const {logout} = useLogout();
   return (
     <>
       <div className="menu pb-5 ">
@@ -32,9 +34,12 @@ const Sidebar = () => {
               </Nav.Link>
               <div className="py-5"></div>
               <Nav.Link as={Link} to="/login">
-                <BoxArrowLeft className="me-4" />
-              Logout
+                <div onClick={logout}>
+                  <BoxArrowLeft className="me-4" />
+                  Logout
+                </div>
               </Nav.Link>
+               
           </Nav>
       </div>
     </>

@@ -12,9 +12,9 @@ const AllCourses = () => {
         {Courses.map((Courz) => {
           const { id } = Courz;
             return(
-              <Col sm={12} md={6} lg={4} className="pt-3" >
-                <Link to={`/course/${id}`} className=" text-decoration-none">
-                <div className='card p-3 mb-3 border-0' key={Courz.id}>
+              <Col sm={12} md={6} lg={4} className="pt-3" key={Courz.id}>
+                <Link to={`/dashboard/course/${id}`} className=" text-decoration-none">
+                <div className='card p-3 mb-3 border-0'>
                   <h3 className='card-title fw-bold align-self-center mt-4'>{Courz.name}</h3>
                 </div>
                 </Link>

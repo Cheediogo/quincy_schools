@@ -2,20 +2,31 @@ import React from 'react';
 import skools from '../Images/skools.png';
 import x from '../Images/x.svg';
 import him_coding from '../Images/him_coding.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import {  Nav } from "react-bootstrap";
-import { signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import { auth, provider } from '../Firebase';
 
 const Login = () => {
 
     const navigate = useNavigate();
     
-    const [user, setUser] = useState({});
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-    });
+    const [user, setUser] = useState("");
+    useEffect(() => {
+        const unsubcribe = onAuthStateChanged(auth, currentUser => {
+            
+          setUser(currentUser);
+          console.log(currentUser.email)
+        });
+    
+        return () => {
+          unsubcribe();
+        };
+      }, []);
+    // onAuthStateChanged(auth, (currentUser) => {
+    //     setUser(currentUser);
+    // });
 
     const [loginDetails, setLoginDetails] = useState({
         email: "",
@@ -27,7 +38,8 @@ const Login = () => {
         setLoginDetails(prev => ({ ...prev, [name]: value }));
       };
 
-    const login = async () => {
+    const login = async (e) => {
+        e.preventDefault();
         try {
             const user = await signInWithEmailAndPassword(
                 auth,
@@ -36,6 +48,7 @@ const Login = () => {
             );
             setLoginDetails({ email: '', password: '' });
             console.log(user);
+            
             navigate('/dashboard/dash')
         } catch (error) {
             console.log(error.message);
@@ -47,24 +60,16 @@ const Login = () => {
         e.preventDefault();
             signInWithPopup(auth, provider)
                 .then((res) => {
-                    console.log(res);
+                    console.log(user);
                     navigate('/dashboard/dash')
+                    localStorage.setItem('user', user.displayName);
+                    localStorage.setItem('email', user.email);
+                    localStorage.setItem('photo', user.photoURL);
                 })
                 .catch((error) => {
                     console.log(error)
                 })
     };
-
-    const logout = async () => {
-        try {
-          await signOut(auth);
-          navigate('/login')
-        } catch (err) {
-          console.log(err.message);
-        }
-      };
-    
-
     
   return (
     <div className='other-bg p-5 vh-100'> 
@@ -107,12 +112,9 @@ const Login = () => {
                         <Nav className='nav-btn'>
                             <button type='submit'  className=' border-0 rounded-pill text-white other-bg'>Login</button>
                         </Nav>
-                        <Link to="/" onClick={logout} >
-                            <h6>Logout</h6>
-                        </Link>
-                        
+                                                
                         {/* <h6>User Logged In: </h6>{auth.currentUser.email} */}
-                        <h6>User Logged In: </h6>{user?.email}
+                        {/* <h6>User Logged In: </h6>{user?.email} */}
                         <div onClick={(e) => SignInwithGoogleFunc(e)} className='text-danger pt-3 fw-bold'>Login with Google</div>
                     </form>
                 </div>
