@@ -10,7 +10,7 @@ import Login from "./Login";
           <h2 className="fw-bold">Profile  Setting</h2>
           <p>Personal Details</p>
           <div className="py-5">
-              <img src={user?.photoURL} />
+              <img src={user?.photoURL} alt="human" />
             </div>
           <Row className=""> 
             <Col sm={12} md={6}>

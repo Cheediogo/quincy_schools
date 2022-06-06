@@ -8,11 +8,11 @@ import Sidebar from './Sidebar'
 const Course = () => {
     const { id } = useParams();
   
-    const oneCourse = Courses.filter(item => item.id === id);
+    const oneCourse = Courses.filter(Courz => Courz.id === id);
     return (
       <Sidebar>
-        {oneCourse.map(item => {
-          const {name, details: { intro, branches }} = item;
+        {oneCourse.map(Courz => {
+          const { name, details: { intro, branches }} = Courz;
           return (
             <div>
               <h3>Introduction to {name}</h3>
@@ -21,9 +21,7 @@ const Course = () => {
               <div>
                 {branches.map(branch => (
                   <div>
-                    key={branch}
-                    branch={branch}
-                    intro={intro}
+                    {branch}
                   </div>
                 ))}
               </div>
