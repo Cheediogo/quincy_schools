@@ -11,20 +11,9 @@ const LandingPage = () => {
             <Navbar className='px-4' collapseOnSelect expand="lg" variant="dark">
                 
                 <Navbar.Brand className='school-name' as={Link} to="/landingPage"><img src={logos} alt="logo" className='me-2'/>QuincySchools</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    {/* <Nav className="nav-feat ms-auto gap-5">
-                    <Nav.Link as={Link} to="/About">About</Nav.Link>
-                    <Nav.Link as={Link} to="/Courses">Courses</Nav.Link>
-                    <Nav.Link as={Link} to="/Instructors">Instructors</Nav.Link>
-                    <Nav.Link as={Link} to="/News">News</Nav.Link>
-                    <Nav.Link as={Link} to="/Pricing">Pricing</Nav.Link>
-                    </Nav> */}
                     <Nav className='ms-auto' as={Link} to="/login">
-                    <button className='nav-button px-4 py-1 text-white'>Sign In</button>
+                        <button className='nav-button px-4 py-1 text-white'>Sign In</button>
                     </Nav>
-                </Navbar.Collapse>
-                
             </Navbar>
         </div>
         <div className='d-flex'>

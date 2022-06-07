@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import {
     BoxArrowLeft,
@@ -21,7 +21,6 @@ const Sidebar = () => {
               alt="profile"
             />
           </div>
-      
           <Nav defaultActiveKey="" className="flex-column">
               <Nav.Link as={Link} to={"/dashboard/dash"}>
                   <Grid className="me-4" /> Dashboard
@@ -38,8 +37,7 @@ const Sidebar = () => {
                   <BoxArrowLeft className="me-4" />
                   Logout
                 </div>
-              </Nav.Link>
-               
+              </Nav.Link>  
           </Nav>
       </div>
     </>

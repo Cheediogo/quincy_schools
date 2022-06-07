@@ -16,8 +16,8 @@ const Login = () => {
     useEffect(() => {
         const unsubcribe = onAuthStateChanged(auth, currentUser => {
             
-          setUser(currentUser);
-          console.log(currentUser.email)
+            setUser(currentUser);
+            console.log(currentUser.email)
         });
     
         return () => {

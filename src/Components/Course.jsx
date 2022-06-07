@@ -1,7 +1,7 @@
 import React from 'react';
 import Courses from './Database';
 import { useParams } from 'react-router-dom';
- 
+import { Container, Row } from "react-bootstrap";
   
 const Course = () => {
     const { id } = useParams();
@@ -9,14 +9,14 @@ const Course = () => {
     const oneCourse = Courses.filter(Courz => Courz.id === id);
     console.log(oneCourse);
     return (
-      <>
+      <Container className='pt-5'>
         {oneCourse.map(Courz => {
           const { name, details: { intro, branches }} = Courz;
           return (
             <div key={name}>
-              <h3>Introduction to {name}</h3>
-              <p py="4" textAlign="justify">{intro}</p>
-              <h4 fontSize="20">Branches</h4>
+              <h3 className='fw-bold'>Introduction to {name}</h3>
+              <p >{intro}</p>
+              <h4 className='fw-bold'>Branches</h4>
               <div>
                 {branches.map(branch => (
                   <div key={branch}>
@@ -27,7 +27,7 @@ const Course = () => {
             </div>
           );
         })}
-      </>
+      </Container >
     );
   };
   
