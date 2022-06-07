@@ -3,7 +3,7 @@ import skools from '../Images/skools.png';
 import x from '../Images/x.svg';
 import him_coding from '../Images/him_coding.png';
 import { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {  Nav } from "react-bootstrap";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth} from '../Firebase';

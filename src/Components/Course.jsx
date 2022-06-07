@@ -1,7 +1,7 @@
 import React from 'react';
 import Courses from './Database';
 import { useParams } from 'react-router-dom';
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
   
 const Course = () => {
     const { id } = useParams();
