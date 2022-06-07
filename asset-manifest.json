@@ -1,8 +1,7 @@
 {
   "files": {
     "main.css": "/quincy_schools/static/css/main.e9e7679e.css",
-    "main.js": "/quincy_schools/static/js/main.c5413e61.js",
-    "static/js/787.aa67210b.chunk.js": "/quincy_schools/static/js/787.aa67210b.chunk.js",
+    "main.js": "/quincy_schools/static/js/main.8d402b20.js",
     "static/media/female.png": "/quincy_schools/static/media/female.df2e86cb28986277a398.png",
     "static/media/reads.png": "/quincy_schools/static/media/reads.498f4c1e5e951c94ac39.png",
     "static/media/skools.png": "/quincy_schools/static/media/skools.60bcf0df7270d0ca9d60.png",
@@ -10,11 +9,10 @@
     "index.html": "/quincy_schools/index.html",
     "static/media/x.svg": "/quincy_schools/static/media/x.6c9a4ba71a333be7b021fc6da39d864c.svg",
     "main.e9e7679e.css.map": "/quincy_schools/static/css/main.e9e7679e.css.map",
-    "main.c5413e61.js.map": "/quincy_schools/static/js/main.c5413e61.js.map",
-    "787.aa67210b.chunk.js.map": "/quincy_schools/static/js/787.aa67210b.chunk.js.map"
+    "main.8d402b20.js.map": "/quincy_schools/static/js/main.8d402b20.js.map"
   },
   "entrypoints": [
     "static/css/main.e9e7679e.css",
-    "static/js/main.c5413e61.js"
+    "static/js/main.8d402b20.js"
   ]
 }
