@@ -1,8 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from '../Firebase';
+import { useState, useEffect } from 'react';
+import { onAuthStateChanged } from "firebase/auth";
 
 const useLogout = () => {
+  const [user, setUser] = useState("");
+  useEffect(() => {
+      const unsubcribe = onAuthStateChanged(auth, currentUser => {
+          
+          setUser(currentUser);
+          console.log(currentUser.email)
+      });
+  
+      return () => {
+        unsubcribe();
+      };
+    }, []);
 
     const navigate = useNavigate();
     const logout = async() => {
@@ -16,7 +30,7 @@ const useLogout = () => {
             console.log(err.message);
           }
     }    
-    return {logout}
+    return {logout, user}
   };
 
 export default useLogout;

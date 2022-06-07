@@ -172,11 +172,20 @@ body {
   font-size: 60px;
 }
 
+.side-height {
+  height: 100vh;
+  background-color: #7b68ee;
+  overflow: hidden;
+}
 
+.dashy-height{
+  height: 100vh;
+}
 @media screen and (min-width: 992px) {
-  .main-content {
-    margin-left: 310px;
+  .main-content, .layout-outlet {
+    margin-left: 303px;
   }
+
 }
 
 @media screen and (max-width: 992px) {
@@ -204,7 +213,6 @@ body {
   color: #fff;
 }
 
-
 /* Profile */
 
 .small-width {
@@ -213,6 +221,11 @@ body {
 
 .big-width {
   width: 700px;
+}
+
+.profile-img img {
+  width: 100px;
+  height: 100px;
 }
 
 /* Course */

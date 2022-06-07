@@ -2,28 +2,18 @@ import React from 'react';
 import skools from '../Images/skools.png';
 import x from '../Images/x.svg';
 import him_coding from '../Images/him_coding.png';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import {  Nav } from "react-bootstrap";
-import { signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, provider } from '../Firebase';
+import useLogout from './useLogout';
 
 const Login = () => {
 
     const navigate = useNavigate();
     
-    const [user, setUser] = useState("");
-    useEffect(() => {
-        const unsubcribe = onAuthStateChanged(auth, currentUser => {
-            
-            setUser(currentUser);
-            console.log(currentUser.email)
-        });
     
-        return () => {
-          unsubcribe();
-        };
-      }, []);
     // onAuthStateChanged(auth, (currentUser) => {
     //     setUser(currentUser);
     // });
@@ -60,11 +50,7 @@ const Login = () => {
         e.preventDefault();
             signInWithPopup(auth, provider)
                 .then((res) => {
-                    console.log(user);
                     navigate('/dashboard/dash')
-                    localStorage.setItem('user', user.displayName);
-                    localStorage.setItem('email', user.email);
-                    localStorage.setItem('photo', user.photoURL);
                 })
                 .catch((error) => {
                     console.log(error)

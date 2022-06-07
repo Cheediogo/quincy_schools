@@ -12,7 +12,7 @@ export default function Wrapper({ children }) {
     <>
       <div>
         <div className="d-none d-lg-block">
-          <div className="dashboard position-fixed top-0 start-0 h-100">
+          <div className="dashboard position-fixed top-0 start-0 side-height">
             <Sidebar/>
           </div>
         </div>
@@ -28,9 +28,7 @@ export default function Wrapper({ children }) {
                       onClick={handleMenu}
                     />
                   </Nav.Link>
-                  <Navbar.Brand>
-                    <img src={skools} alt="logo" />
-                  </Navbar.Brand>
+                  
                   <Nav.Link>
                     <Search className="text-secondary" size={20} />
                   </Nav.Link>
